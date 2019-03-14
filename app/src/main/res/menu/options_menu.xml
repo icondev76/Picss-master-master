@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <item
+                android:id="@+id/hot"
+                android:title="hot" />
+            <item
+                android:id="@+id/neew"
+                android:title="new" />
+            <item
+                android:id="@+id/top"
+                android:title="top" />
+
+</menu>
