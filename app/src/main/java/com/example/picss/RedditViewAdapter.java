@@ -7,14 +7,12 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -26,22 +24,21 @@ import com.example.picss.model.children.Children;
 
 import java.util.List;
 
-import static android.support.constraint.Constraints.TAG;
 import static com.bumptech.glide.request.RequestOptions.fitCenterTransform;
 
-public class CustomAdapter
-        extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
+public class RedditViewAdapter
+        extends RecyclerView.Adapter<RedditViewAdapter.CustomViewHolder> {
     private Context context;
     private List<Children> children;
 
-    public CustomAdapter(Context context, List<Children> children) {
+    public RedditViewAdapter(Context context, List<Children> children) {
         this.context = context;
         this.children = children;
     }
 
     @NonNull
     @Override
-    public CustomAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public RedditViewAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.card_view, parent, false);
 
@@ -49,13 +46,13 @@ public class CustomAdapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CustomAdapter.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RedditViewAdapter.CustomViewHolder holder, int position) {
 
         final Children childrenlist = children.get(position);
         final String url = childrenlist.getData().getUrl();
 
-            holder.starview.setImageResource(R.drawable.ic_star);
-            holder.textView.setText(childrenlist.getData().getSubreddit());
+            //holder.starview.setImageResource(R.drawable.ic_star);
+            //holder.textView.setText(childrenlist.getData().getSubreddit());
 
             Glide
                     .with(context)
@@ -94,7 +91,7 @@ public class CustomAdapter
             }
         });
 
-        holder.textView.setOnClickListener(new View.OnClickListener() {
+        /*holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String head=holder.textView.getText().toString();
@@ -102,7 +99,7 @@ public class CustomAdapter
                 intent.putExtra("head",head);
                 context.startActivity(intent);
             }
-        });
+        });*/
    }
 
     @Override
@@ -112,15 +109,15 @@ public class CustomAdapter
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView textView;
-        ImageView starview;
+        //TextView textView;
+        //ImageView starview;
         ProgressBar progressBar;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageview);
-            starview = itemView.findViewById(R.id.starview);
-            textView = itemView.findViewById(R.id.textview);
+            //starview = itemView.findViewById(R.id.starview);
+            //textView = itemView.findViewById(R.id.textview);
             progressBar=itemView.findViewById(R.id.spinkit_photo);
 
         }

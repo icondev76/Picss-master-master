@@ -38,7 +38,7 @@ public class RedditView extends AppCompatActivity {
 
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    CustomAdapter customAdapter;
+    RedditViewAdapter redditViewAdapter;
     List<Children> child=new ArrayList<>();
     private boolean loading=true;
     int firstVisibleItem, visibleItemCount, totalItemCount;
@@ -60,7 +60,7 @@ public class RedditView extends AppCompatActivity {
         previousTotal = 0;
         this.loading = true;
         child.clear();
-        customAdapter.notifyDataSetChanged();
+        redditViewAdapter.notifyDataSetChanged();
         getSubreddit();
         return super.onOptionsItemSelected(item);
     }
@@ -71,9 +71,9 @@ public class RedditView extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView=findViewById(R.id.recyclerview);
         linearLayoutManager=new LinearLayoutManager(this);
-        customAdapter=new CustomAdapter(this,child);
+        redditViewAdapter=new RedditViewAdapter(this,child);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(customAdapter);
+        recyclerView.setAdapter(redditViewAdapter);
         spinkit=findViewById(R.id.spinkit);
 
 
@@ -81,7 +81,7 @@ public class RedditView extends AppCompatActivity {
         setTitle(head);
 
         child.clear();
-        customAdapter.notifyDataSetChanged();
+        redditViewAdapter.notifyDataSetChanged();
 
         setUpToolbar();
         getSubreddit();
@@ -130,7 +130,7 @@ public class RedditView extends AppCompatActivity {
                 after=feed.getData().getAfter();
                 //recyclerView.setAdapter(new CustomAdapter(MainActivity.this,feed.getData().getChildren()));
                 child.addAll(feed.getData().getChildren());
-                customAdapter.notifyDataSetChanged();
+                redditViewAdapter.notifyDataSetChanged();
                 Log.d(TAG, "onResponse: "+after);
                 spinkit.setVisibility(View.GONE);
             }
