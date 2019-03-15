@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +35,7 @@ public class CustomAdapter
         extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
     private Context context;
     private List<Children> children;
+
 
     public CustomAdapter(Context context, List<Children> children) {
         this.context = context;
@@ -83,7 +86,7 @@ public class CustomAdapter
                         }
                     })
                     .into(holder.imageView);
-        //}
+
 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,12 +119,14 @@ public class CustomAdapter
         ImageView starview;
         ProgressBar progressBar;
 
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageview);
             starview = itemView.findViewById(R.id.starview);
             textView = itemView.findViewById(R.id.textview);
             progressBar=itemView.findViewById(R.id.spinkit_photo);
+
 
         }
     }

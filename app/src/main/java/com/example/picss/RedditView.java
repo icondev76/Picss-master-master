@@ -59,6 +59,7 @@ public class RedditView extends AppCompatActivity {
         after ="";
         previousTotal = 0;
         this.loading = true;
+        toolbar.setSubtitle(option);
         child.clear();
         redditViewAdapter.notifyDataSetChanged();
         getSubreddit();
@@ -146,5 +147,6 @@ public class RedditView extends AppCompatActivity {
     private void setUpToolbar(){
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setSubtitle(option);
     }
 }

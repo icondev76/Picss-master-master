@@ -35,4 +35,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     //Spinkit
     implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+
+    implementation 'com.stone.vega.library:VegaLayoutManager:1.0.6'
 }

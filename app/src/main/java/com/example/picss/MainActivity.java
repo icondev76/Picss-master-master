@@ -16,11 +16,14 @@
  import android.view.MenuInflater;
  import android.view.MenuItem;
  import android.view.View;
+ import android.view.animation.AnimationUtils;
+ import android.view.animation.LayoutAnimationController;
  import android.widget.ProgressBar;
  import android.widget.Toast;
 
  import com.example.picss.model.Feed;
  import com.example.picss.model.children.Children;
+ import com.stone.vega.library.VegaLayoutManager;
 
  import java.io.BufferedReader;
  import java.io.IOException;
@@ -40,11 +43,11 @@
      String option="hot";
      String subreddits;
      private final String TAG="Main Activity";
-
      Toolbar toolbar;
 
      RecyclerView recyclerView;
      LinearLayoutManager linearLayoutManager;
+     int resId=R.anim.layout_animation;
      CustomAdapter customAdapter;
      List<Children> child=new ArrayList<>();
 
@@ -61,26 +64,18 @@
          return true;
      }
 
-
-
      @Override
      public boolean onOptionsItemSelected(MenuItem item) {
          option=item.getTitle().toString();
          after ="";
          previousTotal = 0;
          this.loading = true;
+         toolbar.setSubtitle(option);
          child.clear();
          customAdapter.notifyDataSetChanged();
-         //if (choose.equals("getdata")){
          getData();
-         //}
-         //else{
-         //    getSubreddit();
-         //}
          return super.onOptionsItemSelected(item);
      }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +85,9 @@
         linearLayoutManager=new LinearLayoutManager(this);
         customAdapter=new CustomAdapter(this,child);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        //LayoutAnimationController animationController= AnimationUtils.loadLayoutAnimation(this,resId);
+        //recyclerView.setLayoutAnimation(animationController);
         recyclerView.setAdapter(customAdapter);
         spinkit=findViewById(R.id.spinkit);
 
@@ -142,7 +140,6 @@
                  Set<Children> unique = new LinkedHashSet<Children>(child);
                  child.clear();
                  child.addAll(unique);
-                 //child = new ArrayList<Children>(unique);
 
                  customAdapter.notifyDataSetChanged();
                  //Log.d(TAG, "onResponse: "+after);
@@ -160,6 +157,7 @@
      private void setUpToolbar(){
          toolbar=findViewById(R.id.toolbar);
          setSupportActionBar(toolbar);
+         toolbar.setSubtitle(option);
      }
 
      private void getsubreddits(){

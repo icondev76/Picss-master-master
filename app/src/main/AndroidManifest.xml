@@ -20,11 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-<activity android:name=".Webview"
-            android:screenOrientation="portrait">
-        </activity>
-        -->
+
+
         <activity
             android:name=".RedditView"
             android:screenOrientation="portrait"></activity>
