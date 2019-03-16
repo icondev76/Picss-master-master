@@ -35,6 +35,7 @@ public class CustomAdapter
         extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
     private Context context;
     private List<Children> children;
+    int previousposition;
 
 
     public CustomAdapter(Context context, List<Children> children) {
@@ -106,6 +107,13 @@ public class CustomAdapter
                 context.startActivity(intent);
             }
         });
+
+        if(position>previousposition){
+            AnimationUtil.animate(holder,true);
+        }else{
+            AnimationUtil.animate(holder,false);
+        }
+        previousposition=position;
    }
 
     @Override
