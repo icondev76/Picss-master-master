@@ -2,14 +2,15 @@ package com.example.picss.model.children;
 
 public class Data {
 
-    private String url;
-    private int created_utc;
-    private String thumbnail;
-    private String subreddit;
-    private String domain;
+    public String url;
+    public int created_utc;
+    public String thumbnail;
+    public String subreddit;
+    public String domain;
 
-
-
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getUrl()
     {

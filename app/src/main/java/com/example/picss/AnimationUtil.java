@@ -20,9 +20,9 @@ public class AnimationUtil {
         ObjectAnimator fadeIn = ObjectAnimator.ofFloat(holder.itemView, "alpha", .0f, 1f);
         fadeIn.setDuration(2000);
 
-        //animatorSet.play(fadeIn);//.after(fadeOut);
+        animatorSet.play(fadeIn);//.after(fadeOut);
 
-        animatorSet.playTogether(animatorTranslateY,fadeIn);
+        //animatorSet.playTogether(animatorTranslateY,fadeIn);
         animatorSet.start();
     }
 

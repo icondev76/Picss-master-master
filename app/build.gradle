@@ -19,11 +19,17 @@ android {
 }
 
 dependencies {
+    def paging_version = "1.0.0"
+    def view_model_version = "1.1.0"
+
+
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -35,6 +41,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     //Spinkit
     implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+    
+    //adding view model
+    implementation "android.arch.lifecycle:extensions:$view_model_version"
+    implementation "android.arch.lifecycle:viewmodel:$view_model_version"
 
-    implementation 'com.stone.vega.library:VegaLayoutManager:1.0.6'
+    //adding paging
+    implementation "android.arch.paging:runtime:$paging_version"
+
 }

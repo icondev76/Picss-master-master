@@ -36,6 +36,7 @@ public class RedditView extends AppCompatActivity {
     String head;
 
 
+
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     RedditViewAdapter redditViewAdapter;
@@ -92,12 +93,12 @@ public class RedditView extends AppCompatActivity {
             @Override
 
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
+                //super.onScrolled(recyclerView, dx, dy);
+                int lastVisibleItemPosition = 0;
                 visibleItemCount  = linearLayoutManager.getChildCount();
                 totalItemCount  = linearLayoutManager.getItemCount();
                 firstVisibleItem  = linearLayoutManager.findFirstVisibleItemPosition();
-
+                 lastVisibleItemPosition = ((LinearLayoutManager) linearLayoutManager).findLastVisibleItemPosition();
                 if(loading) {
                     if (totalItemCount  > previousTotal) {
                         loading = false;
@@ -105,7 +106,8 @@ public class RedditView extends AppCompatActivity {
                     }
                 }
 
-                if(!loading && (totalItemCount -visibleItemCount)<=(firstVisibleItem + visibleThreshold))
+                //if(!loading && (totalItemCount -visibleItemCount)<=(firstVisibleItem + visibleThreshold))
+                if(!loading && (lastVisibleItemPosition + visibleThreshold)>(totalItemCount))
                 {
                     //Log.d(TAG, "url: End reached");
 

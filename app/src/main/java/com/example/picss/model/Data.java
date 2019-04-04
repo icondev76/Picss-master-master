@@ -5,9 +5,9 @@ import com.example.picss.model.children.Children;
 import java.util.ArrayList;
 
 public class Data {
-    private ArrayList<Children> children;
+    public ArrayList<Children> children;
 
-    private String after;
+    public String after;
 
     public String getAfter() {
         return after;
